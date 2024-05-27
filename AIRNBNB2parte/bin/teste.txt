@@ -1,0 +1,3 @@
+1234    5678    Quarto  Casa    10  4   Brasil  São Paulo   Bela Vista  4.5 2   200.0
+5678    9876    Apartamento Apartamento 8   2   Brasil  Rio de Janeiro  Copacabana  4.8 1   150.0
+9876    5432    Casa    Casa    12  6   Brasil  Florianópolis   Centro  4.7 3   300.0
