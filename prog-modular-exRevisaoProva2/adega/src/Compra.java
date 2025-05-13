@@ -1,14 +1,24 @@
 public class Compra {
 
-    static final private double FRETE_FIXO = 12;
+    double freteFixo = 12;
     private Vinho[] itens;
-    private int qtdItens;
-    private Cliente cliente = new Cliente();
+    private int qtdItens = 0;
+    private Cliente cliente;
 
     public Compra(Vinho[] itens, Cliente cliente) {
         this.itens = itens;
         this.qtdItens = itens.length;
         this.cliente = cliente;
+    }
+
+    public void adicionarVinhoNovo(Vinho vinho){
+        Vinho[] novosItens = new Vinho[itens.length + 1];
+        for(int i = 0; i < itens.length ; i++){
+            novosItens[i] = itens[i];
+        }
+        novosItens[itens.length] = vinho;
+        itens = novosItens;
+        qtdItens++;
     }
 
     private double valorVinhos(){
@@ -22,7 +32,6 @@ public class Compra {
                 menor = itens[i].getPreco();
             }
         }
-
         if(qtdItens >= 10){
             soma = soma - menor;
         }
@@ -39,7 +48,14 @@ public class Compra {
 
     private double adicionarFreteCompra(){
         double valorComDesconto = aplicarDesconto();
-        double frete = cliente.calcularFrete(valorComDesconto);
-        return frete;
+        freteFixo = cliente.calcularFrete(valorComDesconto);
+        return freteFixo;
+    }
+
+    public double valorTotal(){
+        double valorComDesconto = aplicarDesconto();
+        double valorFrete = adicionarFreteCompra();
+        double valorTotal = valorComDesconto + valorFrete;
+        return valorTotal;
     }
 }
